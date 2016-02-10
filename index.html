@@ -32,10 +32,10 @@
      <div class="row">
         <div class="col-md-9">
             <div ng-repeat="ent in frais">
-                <h2 class="text-center well well-sm"> {{ent.label}} <a href="#"><abbr title="Ajouter"><span class="glyphicon glyphicon-plus-sign pull-right" aria-hidden="true"></span></a></abbr></h2> 
+                <h2 class="text-center well well-sm"> {{ent.label}} <abbr title="Ajouter"><span class="glyphicon glyphicon-plus-sign pull-right clickable" aria-hidden="true"></span></abbr></h2> 
                 <table class="table table-striped table-hover  table-bordered spacer">
-                    <thead class="alert-info text-align">
-                        <tr>
+                    <thead class="alert-info">
+                        <tr class="text-center">
                             <th>Date</th>
                             <th>Description</th>
                             <th>Justificatif</th>
@@ -47,21 +47,22 @@
                              <td>{{transaction.date}}</td>
                              <td  >{{transaction.description}}</td>
                              <td><a href="">{{transaction.justificatif}}</a></td>
-                             <td>{{transaction.montant}}</td>
+                             <td class="text-right">{{transaction.montant}}</td>
                         </tr>           
                     </tbody>
                     <tfoot>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td>Total</td>
-                            <td>228,90€</td>
+                            <td class="text-right">Non rembourser : </td>
+                            <td class="text-right"  ng-class="{ 'danger': countTotalEnt(ent.transactions) > 0}" >{{root.scope.testP=countTotalEnt(ent.transactions)}}</td>
                         </tr>
                     </tfoot>
                 </table>
             </div>
+        <div ng-hide="1">    
         <form>
-        <h2> Ajouter </h2>
+              <h2> Ajouter </h2>
               <div class="form-group">
                 <label for="exampleInputEmail1">Date</label>
                 <input type="Date" class="form-control">
@@ -78,13 +79,14 @@
                 <button type="submit" class="btn btn-default">Submit</button>
         </form>
         </div>
+        </div>
         <div class="col-md-3">
             <div class="panel panel-info ">
               <div class="panel-heading text-center ">Synthèse</div>
               <div class="panel-body">
-                <p>Frais Client Restant : 200€</p>
-                <p>Frais Pro Restant : 100€</p>
-                <p>Total Restant : 300€</p>
+                <p>Frais Client Restant : {{ClientR}} €</p>
+                <p>Frais Pro Restant : {{ProR}} €</p>
+                <p>Total Restant : {{ClientR + ProR}} €</p>
               </div>
             </div>
         </div>

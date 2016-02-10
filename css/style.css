@@ -12,8 +12,13 @@
 	cursor: pointer;
 }
 
-body { padding-bottom: 70px; }
+body { 
+	padding-bottom: 70px; 
+	margin-left: 40px;
+	margin-right: 40px;
+}
 
 .well{
-    background: rgb(59, 133, 157);
+    background: rgba(124, 52, 219, 0.4);
+    color: white;
 }
